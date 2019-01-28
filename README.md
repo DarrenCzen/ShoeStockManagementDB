@@ -1,11 +1,20 @@
 # Shoe Stock Management DB
-Coded in PostGreSQL 11 as a learning exercise and crash course. A simple database for keeping and listing down the inventory of shoes.
+Shoe Database Coded in PostGreSQL 11 as a learning exercise and crash course. 
+
+Coded a simple database for keeping and listing down the inventory of shoes for possibly personal use.
 
 ![Shoe Overview](https://github.com/DarrenCzen/ShoeStockManagementDB/blob/master/ShoeDB_overview.PNG)
 
 ![Shoe Inventory](https://github.com/DarrenCzen/ShoeStockManagementDB/blob/master/shoe_inventview.PNG)
 
 ![Shoe Name List](https://github.com/DarrenCzen/ShoeStockManagementDB/blob/master/name_list.PNG)
+
+Upcoming Features:
+
+Total Value Of All Shoes.
+
+Maybe other stock keeping features like history of shoes sold.
+
 
 Here are my notes gathered over approx. 8 hours.
 
