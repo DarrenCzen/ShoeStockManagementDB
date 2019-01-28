@@ -127,10 +127,11 @@ VALUES (value1,value2);
 --------------------------------------------------------------------------------------------------
 
 Comparism Operator: 
-`= 
+``` 
+= 
 <> != 
-> >= < <=`
-
+> >= < <=
+```
 IN() - matches value in a list
 IS NULL
 BETWEEN - within a range
