@@ -9,12 +9,13 @@ Coded a simple database for keeping and listing down the inventory of shoes for 
 
 ![Shoe Name List](https://github.com/DarrenCzen/ShoeStockManagementDB/blob/master/name_list.PNG)
 
+You must be asking why PG? Parallelism.
+
 Upcoming Features:
 
 Total Value Of All Shoes.
 
 Maybe other stock keeping features like history of shoes sold.
-
 
 Here are my notes gathered over approx. 8 hours.
 
@@ -35,29 +36,39 @@ To create DB:
 --------------------------------------------------------------------------------------------------
 
 Database is a container which contains Tables, Views, Functions, Indexes.
+
 Tables contains data.
+
 Schema: Logical container/collection which contains tables and other database objects
 
 Tablespaces: Allow admins to define locations in FS where files representing DB objects can be stored.
+
 Views: Virtual tables, Database object that is of a stored query (query from one or more tables).
 
 Functions: SQL Code that can be reused again
+
 Operators - Symbolic Functions
 
 Sequences - Similar to AUTO_INCREMENT in SQL
 
 Primary Key - Unique Identifier
+
 Foreign Key - Used to reference a primary key in another table
 
 PG SQL datatypes
+
 boolean, character, number, temporal, array, special types
 
 character - VARCHAR(N)
-number - INT, FLOAT(n), NUMBERIC(P,S) - real number with p digits and s digits behind dp. 
-temporal - DATE, TIME, TIMESTAMP
---------------------------------------------------------------------------------------------------
-Creating a table:
 
+number - INT, FLOAT(n), NUMBERIC(P,S) - real number with p digits and s digits behind dp. 
+
+temporal - DATE, TIME, TIMESTAMP
+
+--------------------------------------------------------------------------------------------------
+
+Creating a table:
+```
 CREATE TABLE table_name (
 	column1_name datatype column_constraint,
 	column2_name datatype column_constraint
@@ -69,12 +80,15 @@ CREATE TABLE person (
 	last_name VARCHAR (50),
 	email VARCHAR (50) UNIQUE
 );
-
+```
 --------------------------------------------------------------------------------------------------
 
 Inserting data:
+
+```
 INSERT INTO person (first_name,last_name,email)
 VALUES('jack','doe','j.doe@hotmail.com');
+```
 
 --------------------------------------------------------------------------------------------------
 
@@ -82,9 +96,12 @@ WHERE clause:
 Filtering rows returned from SELECT query using conditions.
 
 Selecting data from a table:
+
+```
 SELECT column1, column2
 FROM table_name
 WHERE conditions;
+```
 
 --------------------------------------------------------------------------------------------------
 
@@ -96,9 +113,11 @@ DISTINCT keyword in SELECT statement to prevent duplicates
 
 GROUP BY Clause - used to divide rows returned from select statement into groups:
 
+```
 SELECT column1, aggregate_function(column_2)
 FROM table1
 GROUP BY column_1;
+```
 
 aggregate functions - AVG, COUNT, MAX, MIN, SUM, FIRST, LAST
 
@@ -106,10 +125,12 @@ aggregate functions - AVG, COUNT, MAX, MIN, SUM, FIRST, LAST
 
 HAVING clause - used to in conjunction with GROUP BY clause
 
+```
 SELECT column1, aggregate_function(column_2)
 FROM table1
 GROUP BY column_1
 HAVING condition;
+```
 
 --------------------------------------------------------------------------------------------------
 
@@ -119,19 +140,25 @@ DROP - delete a table
 
 --------------------------------------------------------------------------------------------------
 
+```
 UPDATE table_name
 SET column1=value1, column2=value2
 WHERE condition;
+```
 
 --------------------------------------------------------------------------------------------------
 
+```
 DELETE FROM table_name
 WHERE condition;
+```
 
 --------------------------------------------------------------------------------------------------
 
+```
 INSERT INTO table_name(column1,column2)
 VALUES (value1,value2);
+```
 
 --------------------------------------------------------------------------------------------------
 
@@ -150,9 +177,11 @@ LIKE - pattern matching with wild cards %
 
 BETWEEN clause
 
+```
 SELECT column1, column2
 FROM table_name
 WHERE column2 BETWEEN value1 AND value2;
+```
 
 there is also NOT BETWEEN
 
@@ -160,9 +189,11 @@ there is also NOT BETWEEN
 
 LIKE clause
 
+```
 SELECT column1, column2
 FROM table_name
 WHERE column2 LIKE 'A%';
+```
 
 --------------------------------------------------------------------------------------------------
 
@@ -176,10 +207,12 @@ IN - selective values
 
 LIMIT clause - to attain a subset or row returned by a query, get number of highest or lowest items in a  table
 
+```
 SELECT column1, column2
 FROM table_name
 ORDER BY column2
 LIMIT n OFFSET m;
+```
 
 if m = 3, n = 4, it will show id 4 5 6 7
 
@@ -204,9 +237,11 @@ INNER JOIN - return records that have matching values from columns in both table
 Suppose you want to get data from two tables named A and B 
 B has column which relates to primary key column of A
 
+```
 SELECT A.pka, A.data, B.pkb, B.c2
 FROM A 
 INNER JOIN B ON A.pka = B.fka;
+```
 
 LEFT JOIN
 
@@ -241,10 +276,14 @@ CREATE VIEW view_name AS query;
 
 Trigger - Happens when an event involving a table occues. Used to maintain data integrity rules, check accessing activity.
 
+```
 CREATE FUNCTION trigger_function() RETURN trigger AS
+```
 
+```
 CREATE TRIGGER trigger_name {BEFORE|AFTER|INSTEAD OF}{event[OR...]}
 ON table_name[FOR[EACH]{ROW|STATEMENT}] EXECUTE PROCEDURE trigger_function
+```
 
 --------------------------------------------------------------------------------------------------
 BACK UP DB
@@ -259,9 +298,11 @@ Creating tablespace - location on disk where PG stores data
 pg_default (store user data)
 pg_global (stores global data)
 
+```
 CREATE TABLESPACE tbspace_name
 OWNER user_name
 LOCATION directory_path;
+```
 
 e.g. CREATE TABLESPACE dbname LOCATION 'c:\pg\\data\dbname';
 
